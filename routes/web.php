@@ -1,7 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,11 +55,11 @@ Route::get("/request",function (){
 
 // create view
 Route::get("/blog",function (){
-//    $posts= [
-//        "post1"=>"post1 content",
-//        "post2"=>"post2 content",
-//        "post3"=>10
-//    ];
+    $posts= [
+        "post1"=>"post1 content",
+        "post2"=>"post2 content",
+        "post3"=>10
+    ];
 
 //    $posts=[];
     return view("home",["posts"=>$posts]);
@@ -69,8 +68,8 @@ Route::get("/blog",function (){
 
 
 Route::get("/posts",[App\Http\Controllers\PostController::class,"postsIndex"]);
-
-
+Route::get("/posts/create",[App\Http\Controllers\PostController::class,"create"]);
+Route::post("/posts/submit",[App\Http\Controllers\PostController::class,"store"]);
 Route::get("/posts/show/{post}",[App\Http\Controllers\PostController::class,"showPost"]);
-//Route::get("/posts/show/{post}","PostsController@showPost");
+
 
